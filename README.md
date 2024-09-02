@@ -60,34 +60,35 @@
  1.   **Instance Type**  
 t2.small
  2.   **Security Group**
-    -   **Type:**  `SSH`,  **Protocol:**  `TCP`,  **Port Range**  `22`,  **Source:**  `::/0`
-    -   **Type:**  `HTTP`,  **Protocol:**  `TCP`,  **Port Range**  `80`,  **Source:**  `0.0.0.0/0, ::/0`
-    -   **Type:**  `HTTPS`,  **Protocol:**  `TCP`,  **Port Range**  `443`,  **Source:**  `0.0.0.0/0, ::/0`
-    -   **Type:**  `Custom TCP Rule`,  **Protocol:**  `TCP`,  **Port Range**  `1337`,  **Source:**  `0.0.0.0/0`
+   -   **Type:**  `SSH`,  **Protocol:**  `TCP`,  **Port Range**  `22`,  **Source:**  `::/0`
+-   **Type:**  `HTTP`,  **Protocol:**  `TCP`,  **Port Range**  `80`,  **Source:**  `0.0.0.0/0, ::/0`
+-   **Type:**  `HTTPS`,  **Protocol:**  `TCP`,  **Port Range**  `443`,  **Source:**  `0.0.0.0/0, ::/0`
+-   **Type:**  `Custom TCP Rule`,  **Protocol:**  `TCP`,  **Port Range**  `1337`,  **Source:**  `0.0.0.0/0`
+
 หลังจากนั้นกด Launch Instances
 
 **2. เปิด terminal แล้ว copy  SSH วางเพื่อเข้าสู่ instances**
 cd เข้าสู่ Folder ของเราที่มี Key pair อยู่ด้วย
 **3.อัพเดต ติดตั้ง Nodejs. และตั้งค่า**
 3.1   sudo yum update
- 3.2    sudo yum install curl -y
- 3.3 สร้าง npm default directory
+3.2    sudo yum install curl -y
+3.3 สร้าง npm default directory
 3.4 cd ~
 3.5 mkdir ~/.npm-global
- 3.6 npm config set prefix '~/.npm-global' 
- **4. สร้าง Path ให้ Directory ไป Node_modules** 
-  4.1 sudo nano ~/.profile
- 4.2 export PATH=~/.npm-global/bin:$PATH 
- 4.3 source ~/.profile
- **5. ติดตั้ง  Git** 
- sudo yum install git -y
- **6. ใช้ git clone URL  Github reporitory ของเรา**
- **7. cd เข้าโปรเจ็คที่ clone มา**
+3.6 npm config set prefix '~/.npm-global' 
+**4. สร้าง Path ให้ Directory ไป Node_modules** 
+4.1 sudo nano ~/.profile
+4.2 export PATH=~/.npm-global/bin:$PATH 
+4.3 source ~/.profile
+**5. ติดตั้ง  Git** 
+sudo yum install git -y
+**6. ใช้ git clone URL  Github reporitory ของเรา**
+**7. cd เข้าโปรเจ็คที่ clone มา**
 7.1 npm install
 7.2 NODE_ENV=production npm run build
- **8. ติดตั้ง  PM2 Runtime + สร้าง แก้ไข 	environment config**
- 8.1 npm install pm2@latest -g
- 8.2 cd ~
+**8. ติดตั้ง  PM2 Runtime + สร้าง แก้ไข 	environment config**
+8.1 npm install pm2@latest -g
+8.2 cd ~
 8.3 pm2 init
 8.4 sudo nano ecosystem.config.js
 8.5 แก้ไข config โดยพิมพ์ตามนี้ set ค่าตามไฟล์ .env ในเครื่องของเรา
@@ -118,7 +119,8 @@ cd เข้าสู่ Folder ของเราที่มี Key pair อ�
         },
       ],
     };
-  **9. ใช้คำสั่งรัน PM2**
+
+**9. ใช้คำสั่งรัน PM2**
 pm2 startup systemd
 **10. Copy command ที่ขึ้นมา** 
 sudo  env  PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u your-name --hp /home/your-name (commarn แบบนี้)
@@ -127,7 +129,6 @@ pm2 save
 **12.  เมื่อจะรัน Strapi Project อีกครั้ง สามารถใช้คำสั่งดังนี้ได้เลย**
 npm start
 
-**
 
 ## Reference
 Strapi : https://docs.strapi.io/
